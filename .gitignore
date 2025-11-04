@@ -1,0 +1,23 @@
+# Flutter / Dart
+.dart_tool/
+.packages
+.pub-cache/
+build/
+**/build/
+
+# Android
+android/.gradle/
+android/app/build/
+**/outputs/
+
+# APK i archiwa
+*.apk
+flutter_*.tar.xz
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# inne
+*.log
