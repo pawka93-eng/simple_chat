@@ -1,0 +1,57 @@
+plugins {
+    id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    // END: FlutterFire Configuration
+    id "org.jetbrains.kotlin.android"
+    // Flutter plugin MUSI być po Android i Kotlin
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace "com.example.simple_chat"
+
+    // wartości zdefiniowane przez plugin Fluttera
+    //compileSdk flutter.compileSdkVersion
+    //ndkVersion flutter.ndkVersion
+    
+    compileSdk 35
+    ndkVersion "26.1.10909125"
+    
+    defaultConfig {
+        applicationId "com.example.simple_chat"
+        minSdk 23
+        targetSdk 35
+        //flutter.targetSdkVersion
+        versionCode flutter.versionCode
+        versionName flutter.versionName
+    }
+
+    // AGP 8.x => Java 17 + desugar
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    buildTypes {
+        release {
+            // na razie podpis debug, żeby release działał
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+// <<<<<<<< POZA android { }  >>>>>>>>
+dependencies {
+    // wymagane przez flutter_local_notifications (java.time itd.)
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.5"
+}
+
+flutter {
+    source = "../.."
+}

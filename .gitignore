@@ -21,3 +21,4 @@ flutter_*.tar.xz
 
 # inne
 *.log
+flutter/
